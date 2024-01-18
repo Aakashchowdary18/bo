@@ -1,4 +1,4 @@
-<html lang="en"><!-- SN 53838 --><!-- TouchNet Bill&#x2b;Payment Suite 8.8.0 HF 2 Build 10 &#x28; 11&#x2f;30&#x2f;2023 17&#x3a;08&#x3a;40 UTC &#x29; --><head>
+<html lang="en"><!-- SN 53839 --><!-- TouchNet Bill&#x2b;Payment Suite 8.8.0 HF 2 Build 10 &#x28; 11&#x2f;30&#x2f;2023 17&#x3a;08&#x3a;40 UTC &#x29; --><head>
   <!-- Required meta tags always come first -->
   <meta charset="utf-8">
 
@@ -212,10 +212,10 @@ Responsive licensed: true | Mobile device: false
 
 
 
-  <title>Student Account Home</title>
+  <title>Account Activity</title>
 
   
-    
+  
 
 
 
@@ -226,16 +226,8 @@ Responsive licensed: true | Mobile device: false
   <base href="https://secure.touchnet.net/C21641_tsa/web/">
 
 
-    
-
-    <script>
-      $( function()
-      {
-        startSpinner( 'spinner2' );
-        startSpinner( 'spinner3' );
-      });
-    </script>
-    
+  
+  
 
 
 
@@ -642,7 +634,7 @@ Responsive licensed: true | Mobile device: false
 
 
 
-  
+
 </head>
 
 <body id="" class="" onload="">
@@ -1024,10 +1016,38 @@ without having focus on it -->
 
 
   
+<div id="currentAccountActivity" class="container">
+  <div class="row mb-2">
+    <div class="col-sm-5">
+      <h1>Account Activity</h1>
+    </div>
+
     
-    <h1 class="sr-only">Student Account Home</h1>
-    <div class="container-fluid">
-      
+
+    
+      <div id="activityButtons" class="col-sm-7 text-right">
+        <button class="btn btn-default" type="button" id="expandCollapseBtn">
+          <span>Expand All</span>
+          <span class="sr-only">Current Activity</span>
+        </button>
+        <button class="btn btn-default" type="button" id="printAllBtn" onclick="printExportFunction();">
+            Print
+              <span class="sr-only">Current Activity</span>
+        </button>
+        <button class="btn btn-default" type="button" id="excelAllBtn" onclick="excelExportFunction();">
+          <span class="sr-only">Export Current Activity to</span>Excel
+        </button>
+        <button class="btn btn-default" type="button" id="pdfAllBtn" onclick="pdfExportFunction();">
+          <span class="sr-only">Export Current Activity to</span>PDF
+        </button>
+      </div>
+      <span id="screenReaderInfoMessage" class="sr-only" aria-live="polite"></span>
+    
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div>
+        
 
 
 
@@ -1043,146 +1063,30 @@ without having focus on it -->
 
 <div id="scriptMessages" class="alert alert-warning"></div>
 
-      <div class="row">
-        <div class="col-sm-3 col-print-4 hidden-sm hidden-xs">
-          
-
-
-
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h2 class="panel-title">
-      Announcement
-    </h2>
-  </div>
-  <div class="panel-body wordBreak">
-    <p>
-      
-      
         
-          </p><p>Welcome to The University of Bridgeport Account Center! You can view
-  your statements, recent account activity, set up electronic refunds,
-  make payments, and store account payment profiles. At this site you
-  can allow third parties access to your statements and to make payments
-  on your account. Please contact the Student Financial Services Office
-  at sfs@bridgeport.edu or 203-576-4568 if you need further assistance.</p>
-<p>
-  <strong>Need to make an international payment?</strong>
-  <br>
-  <a href="https://www.flywire.com/school/bridgeport?utm_source=dobrien&amp;utm_medium=ebiller&amp;utm_campaign=BRI" target="_blank"><img alt="Flywire Logo" src="https://www.peertransfer.com/images/pay_now_w_flywire.png" style="width: 154.0px;height: 46.0px;border: 0;">
-  </a>
-</p>
-        
-        
-      
-    <p></p>
-  </div>
-</div>
-
-        </div>
-        <div class="col-sm-6 col-print-8">
           
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-
-
-
-
-
-
-  
-  
-  <div class="account-alerts alert alert-warning" role="alert">
-    <div class="media">
-      <div class="media-left">
-      <span class="fa-stack fa-lg pull-left mr-2">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-money fa-stack-1x fa-inverse icon" aria-hidden="true"></i>
-      </span>
-      </div>
-      <div class="media-body">
-        <p>To sign up for direct deposit of your refunds, complete your setup in the <a id="refundSetupPage_W" href="/C21641_tsa/tapp?tapp-stoken=QLlfw4RxfTw&amp;Navigate=refund_accounts.jsp&amp;OnError=welcome.jsp&amp;LOAD_REFUNDS=">
-        Refund Account Setup</a> page.</p>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-          
-
-
-
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-
-
-
-
-
-
-
-<script>
-    $( document ).ready(function() {
-        if( isApplePayAllowed() )
-        {
-            document.getElementById("isApplePaySession").value = "true";
-        }
-    });
+            
+
+            <div id="accountActivity">
+              
+              
+              
+              
+              
+              <script>
+  var DATATABLES_EXPORT_LIBRARIES_FOLDER_PATH = "\x2FC21641_tsa\x2Fweb\x2Flib\x2Fdatatables\x2F1.10.15\x2Fbuttons.html5.min.js";
+
+  var PDF_EXPORT_LIBRARIES = [ "\x2FC21641_tsa\x2Fweb\x2Flib\x2Fdatatables\x2F1.10.15\x2Fbuttons.html5.min.js",
+    "\x2FC21641_tsa\x2Fweb\x2Fjs\x2Fexport\x2Fpdfmake.min.js",
+    "\x2FC21641_tsa\x2Fweb\x2Fjs\x2Fexport\x2Fvfs_fonts.js" ];
+
+  var EXCEL_EXPORT_LIBRARIES = [ "\x2FC21641_tsa\x2Fweb\x2Flib\x2Fdatatables\x2F1.10.15\x2Fbuttons.html5.min.js",
+    "\x2FC21641_tsa\x2Fweb\x2Fjs\x2Fexport\x2Fjszip.min.js" ];
 </script>
 
+              
+              
 
-          
 
 
 
@@ -1192,394 +1096,101 @@ without having focus on it -->
 
 
 
-
-
-
-<div id="accountDetail" class="panel panel-default">
-  
-    
-    
-      <div class="panel-heading">
-        <div class="row">
-          <div class="col-xs-12 col-sm-7">
-            <h2>Student Account</h2>
-          </div>
-          
-            <div class="col-sm-5">
-              <h2><span class="pull-right ">ID: xxx7379</span></h2>
-            </div>
-          
-        </div>
-      </div>
-    
-  
-
-  <ul class="list-group">
-    
-    
-    
-
-    
-    
-    
-      
-        
-          
-          <li class="list-group-item border-top-0">
-
-          <a href="/C21641_tsa/tapp?tapp-stoken=QLlfw4RxfTw&amp;Navigate=current_activity.jsp&amp;OnError=welcome.jsp&amp;CURR_ACTIVITY=19488&amp;ACCT_ID=19488&amp;REDIRECT=true">
-          <div class="row">
-            <div class="col-xs-7 col-md-6">
-              <h3>Balance</h3>
-            </div>
-            <div class="col-md-6">
-              <h3 class="text-right">
-                  $0.00
-              </h3>
-            </div>
-          </div>
-          </a>
-        
-
-        
-
-        
-
-        
-
-        
-      
-      
-    
-
-    
-    
-    
-    
-    
-    </li><li class="list-group-item hidden-print">
-      <div class="row">
-        <div class="col-md-12 text-right">
-          
-            <form name="ViewAllActivityForm" action="/C21641_tsa/tapp" method="get"><input type="hidden" name="tapp-stoken" value="QLlfw4RxfTw">
-              <input type="hidden" name="Navigate" value="current_activity.jsp">
-              <input type="hidden" name="OnError" value="welcome.jsp">
-              <input type="hidden" name="CURR_ACTIVITY" value="19488">
-              <input type="hidden" name="REDIRECT" value="">
-              <input type="submit" class="btn btn-default" role="button" aria-label="My Account: Activity" value="View Activity">
-            </form>
-          
-
-          
-            <form name="EnrollPmtPlanForm" action="/C21641_tsa/tapp" method="get"><input type="hidden" name="tapp-stoken" value="QLlfw4RxfTw">
-              <input type="hidden" name="Navigate" value="plan_enrollment.jsp">
-              <input type="hidden" name="OnError" value="welcome.jsp">
-              <input type="hidden" name="ACCT_ID" value="19488">
-              <input type="submit" class="btn btn-default" role="button" aria-label="My Account: Enroll in Payment Plan" value="Enroll in Payment Plan">
-            </form>
-          
-
-          
-            <form name="PayNowForm" action="/C21641_tsa/tapp" method="get"><input type="hidden" name="tapp-stoken" value="QLlfw4RxfTw">
-              <input type="hidden" name="Navigate" value="make_payment.jsp">
-              <input type="hidden" name="OnError" value="welcome.jsp">
-              <input type="hidden" name="PAY_NOW" value="Y">
-              <input type="hidden" name="ACCT_ID" value="19488">
-              <input type="submit" class="btn btn-primary" aria-label="My Account: Make Payment" value="Make Payment">
-            </form>
-          
-        </div>
-      </div>
-    </li>
-    
-  </ul>
-</div>
-
-
-
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-
-
-
-
-
-
-
-
-
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-
-
-
-
-  
-
-  <div id="statementsPanel" class="panel panel-default ">
-  <div class="panel-heading">
-      <div class="row">
-        <div class="col-sm-6">
-          <h2 class="panel-title">
-              Statements
-          </h2>
-        </div>
-      </div>
-    </div>
-
-    <ul class="list-group">
-      <div id="odsComponentMsg" class="alert alert-danger mt-2 mr-2 ml-2"></div>
-
-      
-
-      
-        <li class="list-group-item">
-          <div class="row">
-            <div class="pull-left pl-3 pr-1">
-              <h4 class="mb-0">Your latest eBill Statement</h4>
-              <h3>(1/12/24)
-                <a href="/C21641_tsa/tapp?tapp-stoken=QLlfw4RxfTw&amp;Navigate=account_summary.jsp&amp;OnError=account_summary.jsp&amp;LOAD_STMT_DTS_ALL_ACCOUNTS=&amp;CURR_ACTIVITY=19488&amp;RELOAD_ALL_PMTS=&amp;TAB_NUM=0">Statement
-                  
-                    :
-                    <span class="pl-3">
-                      $5,655.00
-                    </span>
-                  
-                </a>
-              </h3>
-            </div>
-            <div class="pull-right pr-3">
-              <p class="text-right">
-                <input type="button" class="btn btn-default" role="button" aria-label="My Account: View eBill Statements" value="View Statements" onclick="location.href='/C21641_tsa/tapp?tapp-stoken=QLlfw4RxfTw&amp;Navigate=account_summary.jsp&amp;OnError=account_summary.jsp&amp;LOAD_STMT_DTS_ALL_ACCOUNTS=&amp;CURR_ACTIVITY=19488&amp;RELOAD_ALL_PMTS=&amp;TAB_NUM=0'">
-              </p>
-            </div>
-          </div>
-        </li>
-      
-
-      
-
-    </ul>
-  </div>
-
-
-
-        </div>
-        <div class="col-sm-6 col-md-3 col-print-4 hidden-md hidden-lg float-md-right floatPrintRight">
-          
-
-
-
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h2 class="panel-title">
-      Announcement
-    </h2>
-  </div>
-  <div class="panel-body wordBreak">
-    <p>
-      
-      
-        
-          </p><p>Welcome to The University of Bridgeport Account Center! You can view
-  your statements, recent account activity, set up electronic refunds,
-  make payments, and store account payment profiles. At this site you
-  can allow third parties access to your statements and to make payments
-  on your account. Please contact the Student Financial Services Office
-  at sfs@bridgeport.edu or 203-576-4568 if you need further assistance.</p>
-<p>
-  <strong>Need to make an international payment?</strong>
-  <br>
-  <a href="https://www.flywire.com/school/bridgeport?utm_source=dobrien&amp;utm_medium=ebiller&amp;utm_campaign=BRI" target="_blank"><img alt="Flywire Logo" src="https://www.peertransfer.com/images/pay_now_w_flywire.png" style="width: 154.0px;height: 46.0px;border: 0;">
-  </a>
-</p>
-        
-        
-      
-    <p></p>
-  </div>
-</div>
-
-        </div>
-        <div class="col-sm-6 col-md-3 col-print-8">
-          
-            <div id="productOfferModalRoot"></div>
-            <div id="productPurchasedWidgetRoot"></div>
-            <link rel="StyleSheet" href="https://secure.touchnet.net:443/pe_productmodule//css/product-module-enduser.min.css" type="text/css">
-            <script src="https://secure.touchnet.net:443/pe_productmodule//js/product-module-enduser.tiny.min.js"></script>
-
-            
-            
-            
-            
 <script>
-  const MAKE_PAYMENT_URL_PARAMETERS = '\x2FC21641_tsa\x2Ftapp?tapp-stoken=QLlfw4RxfTw&Navigate=make_payment.jsp&OnError=make_payment.jsp&PrevPage=welcome.jsp&REDIRECT=true&SET_PARMS=true&SHOW_PMT_METHODS=true&PMT_TYPE=12&PMT_AMT=';
-
-  $( function () {
-    const sessionKey = 'displayProductOfferModal_' + '7AD9F2441AABEBBBB35109BEF16A0EB9.sl2f3bn1' + '_' + '20521';
-
-    if ( typeof PrdmComponentLib === "object"
-        && typeof PrdmComponentLib.ProductOfferModalRenderer === "function" )
-    {
-      const PRODUCT_MODULE_API_URL = '\x2FC21641_tsa\x2Ftapp?tapp-stoken=QLlfw4RxfTw&Navigate=\x2Fjsp\x2Frest\x2F_json_ok.jsp&OnError=\x2Fjsp\x2Frest\x2F_json_error.jsp&PRODUCT_MODULE_ACTIONS=';
-
-      
-        
-          const closeProductOffer = function ( productOffer ) {
-            console.log( "Product offer modal closed" );
-
-            if ( !productOffer.productDeclined )
-            {
-              setProductOfferModalActionPerformed();
-            }
-          };
-
-          const setProductOfferModalActionPerformed = function () {
-            console.log( "Setting product offer modal show attempted" );
-            sessionStorage.setItem( sessionKey, "true" );
-          };
-
-          const purchaseProduct = function ( quoteResponse ) {
-            location.href = MAKE_PAYMENT_URL_PARAMETERS + quoteResponse.quote.price;
-          };
-
-          const productOfferModalProps = {
-            baseUrl: PRODUCT_MODULE_API_URL,
-            contentType: 'application/x-www-form-urlencoded',
-            productUserId: '26ff7bc7\x2D5289\x2D4999\x2D893e\x2D97198ac615d8',
-            customerNumber: 'C21641',
-            studentAttributes: JSON.parse('{"ATTRIBUTE_CODE":["GR","GREN","MS.CPSCI"],"APPLICANT_ACADEMIC_PLAN":[],"APPLICANT_ATTRIBUTE_CODE":[],"ACADEMIC_LEVEL":[],"ACADEMIC_PLAN":[],"ACADEMIC_PROGRAM":["MS.CPSCI"],"ACADEMIC_UNIT":[],"CAMPUS":[],"CAMPUS_CODE":[],"CAREER_CODE":["GR"],"CLASS_STANDING":[],"COLLEGE_CODE":[],"DEGREE_PURSUED":["MS.CPSCI"],"GRADE_LEVEL":[],"GROUP_LIST":["GR"],"HOLD_CODE":["EMER","INSH"],"PROGRAM_STUDY":["MS.CPSCI"],"PROGRAM_VERSION":[],"SAP_ENROLLMENT_STATUS":[],"SERVICE_INDICATOR":["GR","GREN","MS.CPSCI"],"STUDENT_LEVEL":["GR"],"STUDENT_TYPE":["GREN"],"VETERAN_STATUS":["false"]}'),
-            widgetButtonContainerClassName: 'text-right',
-            hideModalOnInit: 'false' === "true" || sessionStorage.getItem(sessionKey) === "true",
-            studentFirstName: 'Aakash\x20Chowdary',
-            studentLastName: 'Bandarupalli',
-            countryCode: '',
-            stateProvinceCode: '',
-            purchaseNowCallback: purchaseProduct,
-
-            closeCallback: closeProductOffer
-          };
-
-          const mountModalWindow = function () {
-            const productOfferModalRenderer = new PrdmComponentLib.ProductOfferModalRenderer();
-            productOfferModalRenderer.mount('productOfferModalRoot', productOfferModalProps);
-          };
-        
-        
-      
-
-      // use to combine modal windows from react and jquery
-      // if modalStack is not empty, we process jquery windows first
-      if (!modalStack || modalStack.length === 0) {
-        mountModalWindow();
-      } else {
-        modalStack.unshift(mountModalWindow);
-      }
-    }
-  });
+  const CURRENT_ACTIVITY = "Current Activity";
+  const DOT_XLSX = ".xlsx";
+  const DOT_PDF = ".pdf";
+  const PRINT = "Print";
+  const EXCEL = "Excel";
+  const PDF = "PDF";
+  const SEARCH_INSTRUCTIONS = "To submit search query press Enter.";
+  const EXPAND = "Expand";
 </script>
 
+<script type="text/javascript" src="/C21641_tsa/web/js/activity/_activities_export_common.js"></script>
+<script type="text/javascript" src="/C21641_tsa/web/js/activity/_activities_export_print.js"></script>
+<script type="text/javascript" src="/C21641_tsa/web/js/activity/_activities_export_excel_lib.js"></script>
+<script type="text/javascript" src="/C21641_tsa/web/js/activity/_activities_export_excel.js"></script>
+<script type="text/javascript" src="/C21641_tsa/web/js/activity/_activities_export_pdf.js"></script>
+
+
+
+
+
+
+
+
+
+<form class="form-horizontal" name="ViewActivityForm" action="/C21641_tsa/tapp" method="get"><input type="hidden" name="tapp-stoken" value="QLlfw4RxfTw">
+  <input type="hidden" id="Navigate_VAF" name="Navigate" value="current_activity.jsp">
+  <input type="hidden" id="OnError_VAF" name="OnError" value="current_activity.jsp">
+  <input type="hidden" id="REDIRECT_VAF" name="REDIRECT" value="">
+  <input type="hidden" id="FILTER_VAF" name="ACTIVITY_FILTER" value="ALL">
+
+  
+  
+
+  <div class="row hidden-print">
+
+    
+    
+    
+    
+
+    <div class="">
+      <div class="">
+        <label class="col-md-2 mt-1 control-label" for="dateRangeActivity">
+          Filter activity by
+        </label>
+        <div class="col-md-3 mb-2">
+          <select name="ACTIVITY_PERIOD" id="dateRangeActivity" class="form-control">
+            <option value="ALL" selected="">
+              Full account activity
+            </option>
             
+              <option value="SINCE_LAST_STMT">
+                  Activity since last statement date
+              </option>
+            
+            <option value="DATE_RANGE">
+              Date range
+            </option>
+          </select>
+        </div>
+      </div>
+
+      
+    </div>
+
+
+    
+
+    <div id="activityDates">
+      <div class="col-lg-4 col-md-5 col-sm-6 mb-1 daterange-picker input-daterange hidden">
+        <label class="control-label" for="FROM_DT_IDActivity">From</label>
+        <input id="FROM_DT_IDActivity" class="input datepicker hasDatepicker" name="FROM_DT" type="text" title="Specify date (M/d/yy)" size="10" maxlength="10" value="12/17/23">
+        <label class="control-label" for="TO_DT_IDActivity">To</label>
+        <input id="TO_DT_IDActivity" class="input datepicker hasDatepicker" name="TO_DT" type="text" title="Specify date (M/d/yy)" size="10" maxlength="10" value="1/17/24">
+      </div>
+    </div>
+    
+      <div class="col-lg-3 col-md-2 col-sm-6 mb-2">
+  <input type="submit" id="accountActivityViewButton" class="btn btn-default" value="View Activity">
+</div>
+
+    
+  </div>
+
+  
+</form>
+
 <script>
-  $( function () {
-    if ( typeof PrdmComponentLib === "object"
-        && typeof PrdmComponentLib.ProductPurchasedWidgetRenderer === "function" )
-    {
-      
-
-      const productPurchasedModalProps = {
-        baseUrl: '\x2FC21641_tsa\x2Ftapp?tapp-stoken=QLlfw4RxfTw&Navigate=\x2Fjsp\x2Frest\x2F_json_ok.jsp&OnError=\x2Fjsp\x2Frest\x2F_json_error.jsp&PRODUCT_MODULE_ACTIONS=',
-        contentType: 'application/x-www-form-urlencoded',
-        productUserId: '26ff7bc7\x2D5289\x2D4999\x2D893e\x2D97198ac615d8',
-        customerNumber: 'C21641'
-      };
-
-      new PrdmComponentLib.ProductPurchasedWidgetRenderer().mount( 'productPurchasedWidgetRoot', productPurchasedModalProps );
-      
-    }
+  $( "#dateRangeActivity" ).change( function () {
+    $( "#activityDates .daterange-picker" ).toggleClass( "hidden", $( this ).val() !== "DATE_RANGE" );
+    document.getElementById( 'FILTER_VAF' ).value = $( this ).val();
   } );
 </script>
 
-          
-
-          
 
 
 
@@ -1592,224 +1203,333 @@ without having focus on it -->
 
 
 
-<div id="activityCenter" class="panel panel-default hidden-print" data-main="">
-  <div class="panel-heading">
-    <h2>My Profile Setup</h2>
-  </div>
-  <div class="list-group">
+
+
+  
+  
+
+  
     
-      <a class="list-group-item activityHitArea" href="/C21641_tsa/tapp?tapp-stoken=QLlfw4RxfTw&amp;Navigate=proxy_users.jsp&amp;OnError=welcome.jsp">
-        <h3 class="mb-0">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-users fa-stack-1x fa-inverse icon" aria-hidden="true"></i>
-              </span>
-            Authorized Users
-        </h3>
-      </a>
     
-    <a class="list-group-item activityHitArea" href="/C21641_tsa/tapp?tapp-stoken=QLlfw4RxfTw&amp;Navigate=user_profile.jsp&amp;OnError=welcome.jsp">
-      <h3 class="mb-0">
-            <span class="fa-stack fa-lg">
-              <i class="fa fa-circle fa-stack-2x"></i>
-              <i class="fa fa-user fa-stack-1x fa-inverse icon" aria-hidden="true"></i>
+    
+    
+    <div class="panel panel-default activities-panel">
+      
+        
+        
+          <div class="panel-heading singleAccount" role="tab" id="heading1">
+        
+      
+
+      <!-- Display Current Activity Info -->
+      
+        
+        
+        
+          <h2 class="row">
+            Student Account Balance
+            <span class="pull-right">
+                $7,720.00
             </span>
-        Personal Profile
-      </h3>
-    </a>
+          </h2>
+        
+      
+        </div><!-- panel-heading -->
+      <div class="panel-body">
+
+        
+
+        
+          <div class="panel-group mb-0" id="termsAccordion" role="tablist" aria-multiselectable="true">
+        
+
+        
+          
+          
+          
+
+          
+          
+          
+          
+          
+          
+          
+          <div class="panel panel-default term-panel">
+            
+              
+                <div class="panel-heading chevron" id="termsHeading1_0" tabindex="0" role="button" data-toggle="collapse" data-parent="#termsAccordion" href="#termsCollapse1_0" aria-expanded="true" aria-controls="termsCollapse1_0">
+              
+              
+            
+            
+              
+              
+              
+                
+              
+            
+            <h2 class="row">
+              Spring 2024
+              
+                <span class="pull-right">$7,710.00</span>
+              
+            </h2>
+                </div><!-- panel-heading -->
+            <div>
+
+              
+                <div id="termsCollapse1_0" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="termsHeading1_0" aria-expanded="true" style="">
+                  <div class="panel-body">
+              
+
+              
+              
+              
+              
+              
+              
+              
+
+              <div class="mb-3">
+                <button class="btn btn-default" onclick="printExportFunction( 0 )">
+                  <span>Print</span>
+                  <span class="sr-only"> activity for Student Account and Spring 2024 term</span>
+                </button>
+                <button class="btn btn-default" onclick="excelExportFunction( 0, 'Student Account - Spring 2024' )">
+                  <span class="sr-only">Export activity for Student Account and Spring 2024 term to</span>
+                  <span>Excel</span>
+                </button>
+                <button class="btn btn-default" onclick="pdfExportFunction( 0, 'Student Account - Spring 2024' )">
+                  <span class="sr-only">Export activity for Student Account and Spring 2024 term to</span>
+                  <span>PDF</span>
+                </button>
+              </div>
+
+              
+              
+
+              
+              
+
+              
+              
+
+              
+
+              
+              
+                
+                  
+
+
+
+
+
+
+
+
+
+<h3>Account Activity</h3>
+
+<div class="">
+
+<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"><div id="DataTables_Table_0_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="DataTables_Table_0"><span class="sr-only">To submit search query press Enter.</span></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-striped customDataTable dataTable dtr-inline" cellspacing="0" width="100%" data-account-id="19488" data-term-id="32" data-table-id="0" data-export-header="Student Account - Spring 2024 - Account Activity" data-activity-filter="ALL" data-expanded-line-items-exist="false" data-from-date="12/17/23" data-to-date="1/17/24" data-activity-period-id="" data-ajax-url="/C21641_tsa/datatable" id="DataTables_Table_0" role="presentation" style="width: 100%;">
+  <thead>
+  <tr role="row"><th title="Sort by Description" class="sorting" tabindex="-1" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 235px;" aria-label="Description: activate to sort column ascending">Description<span class="arrow-hack"></span></th><th title="Sort by Code" class="sorting" tabindex="-1" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 80px;" aria-label="Code: activate to sort column ascending">Code<span class="arrow-hack"></span></th><th title="Sort by Date" class="sorting_desc" tabindex="-1" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 76px;" aria-sort="descending" aria-label="Date: activate to sort column ascending">Date<span class="arrow-hack"></span></th><th title="Sort by Charges" class="right sorting" tabindex="-1" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 108px;" aria-label="Charges: activate to sort column ascending">Charges<span class="arrow-hack"></span></th><th title="Sort by Credits/Anticipated Credits" class="right sorting" tabindex="-1" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 289px;" aria-label="Credits/Anticipated Credits: activate to sort column ascending">Credits/Anticipated Credits<span class="arrow-hack"></span></th></tr>
+  </thead>
+  <tbody><tr role="row" class="odd cursor-pointer" id="6"><td tabindex="-1" style="font-weight: 500;">Add/ Drop Fee</td><td>ADF</td><td class="sorting_1">1/12/24</td><td class=" right">$140.00</td><td class=" right">--</td></tr><tr role="row" class="even cursor-pointer" id="7"><td tabindex="-1" style="font-weight: 500;">Tuition GR Engineering</td><td>TGREN</td><td class="sorting_1">1/12/24</td><td class=" right">$6,270.00</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="8"><td tabindex="-1" style="font-weight: 500;">Student Government Fee</td><td>STGOV</td><td class="sorting_1">1/8/24</td><td class=" right">$120.00</td><td class=" right">--</td></tr><tr role="row" class="even cursor-pointer" id="9"><td tabindex="-1" style="font-weight: 500;">General Fee</td><td>GENF</td><td class="sorting_1">1/8/24</td><td class=" right">$620.00</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="10"><td tabindex="-1" style="font-weight: 500;">International Student Fee</td><td>INTFE</td><td class="sorting_1">1/8/24</td><td class=" right">$50.00</td><td class=" right">--</td></tr><tr role="row" class="even cursor-pointer" id="11"><td tabindex="-1" style="font-weight: 500;">Engineering Fee Grad</td><td>ENFGR</td><td class="sorting_1">1/8/24</td><td class=" right">$510.00</td><td class=" right">--</td></tr></tbody>
+  <tfoot class="">
+  
+  
+  
+  
+  <tr><td class="text-right right" rowspan="1" colspan="5">
+      <div class="row b-0">
+        <div class="chargesFooterText col-xs-12 col-sm-10">Total Charges:</div>
+        <div class="chargesFooterAmount col-xs-12 col-sm-2 pl-0">$7,710.00</div>
+      </div>
+    </td></tr>
+  <tr><td class="text-right" rowspan="1" colspan="5">
+      <div class="row b-0">
+        <div class="creditsFooterText col-xs-12 col-sm-10">Total Credits/Anticipated Credits:</div>
+        <div class="creditsFooterAmount col-xs-12 col-sm-2 pl-0">$0.00</div>
+      </div>
+    </td></tr>
+  
     
-      <a class="list-group-item activityHitArea" href="/C21641_tsa/tapp?tapp-stoken=QLlfw4RxfTw&amp;Navigate=payment_methods.jsp&amp;OnError=welcome.jsp">
-        <h3 class="mb-0">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-credit-card fa-stack-1x fa-inverse icon" aria-hidden="true"></i>
-          </span>
-            Payment Profile
-        </h3>
-      </a>
+      
+      
+        
+          
+          
+          
+            
+            
+          
+        
+      
+      
+      
+    
+
     
     
-      <a class="list-group-item activityHitArea" href="/C21641_tsa/tapp?tapp-stoken=QLlfw4RxfTw&amp;Navigate=user_security_profile.jsp&amp;OnError=welcome.jsp">
-        <h3 class="mb-0">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-lock fa-stack-1x fa-inverse icon" aria-hidden="true"></i>
-          </span>
-            Security Settings
-        </h3>
-      </a>
+      
+        
+        
+        
+
+        
+        
+      
+
+      
+    
+
+    
+      
+      <tr class="hidden"><td colspan="5" rowspan="1"></td></tr>
+    
+
+    
+      <tr><td class="text-right" rowspan="1" colspan="5">
+          <div class="row b-0">
+            <div class="firstFooterText col-xs-12 col-sm-10">Term Balance:</div>
+            <div class="firstFooterAmount col-xs-12 col-sm-2 pl-0">$7,710.00</div>
+          </div>
+        </td></tr>
     
     
-      <a class="list-group-item activityHitArea" href="/C21641_tsa/tapp?tapp-stoken=QLlfw4RxfTw&amp;Navigate=agreements.jsp&amp;OnError=welcome.jsp">
-        <h3 class="mb-0">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-file-text-o fa-stack-1x fa-inverse icon" aria-hidden="true"></i>
-          </span>
-            Consents and Agreements
-        </h3>
-      </a>
+      <tr><td class="text-right" rowspan="1" colspan="5">
+          <div class="row b-0">
+            <div class="secondFooterText col-xs-12 col-sm-10">Term Balance Including Estimated Aid:</div>
+            <div class="secondFooterAmount col-xs-12 col-sm-2 pl-0">$7,710.00</div>
+          </div>
+        </td></tr>
     
-    
-      <a class="list-group-item activityHitArea" href="/C21641_tsa/tapp?tapp-stoken=QLlfw4RxfTw&amp;Navigate=refund_accounts.jsp&amp;OnError=refund_accounts.jsp&amp;LOAD_REFUND_HISTORY_ACTION=">
-        <h3 class="mb-0">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-retweet fa-stack-1x fa-inverse icon" aria-hidden="true"></i>
-          </span>
-            Electronic Refunds
-        </h3>
-      </a>
-    
-    
-      <a class="list-group-item activityHitArea" href="/C21641_tsa/tapp?tapp-stoken=QLlfw4RxfTw&amp;Navigate=automated_payments.jsp&amp;OnError=welcome.jsp">
-        <h3 class="mb-0">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-calendar-check-o fa-stack-1x fa-inverse icon" aria-hidden="true"></i>
-          </span>
-            Auto Bill Pay
-        </h3>
-      </a>
-    
-  </div>
+  
+  </tfoot>
+</table><div id="DataTables_Table_0_processing" class="dataTables_processing panel panel-default" style="display: none;">Processing...</div></div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"></div></div></div>
+
 </div>
 
-          
-
-
-
-
-
+<script>
+  var columns = [{data: 'description'}];
 
   
-    
+    columns.push( {data: 'type'} );
   
 
+  columns.push( {data: 'date'} );
 
+  
 
-  <div id="termBalances" class="panel panel-default">
-    <div class="panel-heading">
-      <h2 class="panel-title">Term Balances</h2>
-    </div>
-    
-    
-    <ul class="list-group">
-      
-        
-        
-          
-          
+  columns.push( {
+    data: 'formattedChargeAmount',
+    className: 'right'
+  } )
 
-          
-          
-            
-            
+  columns.push( {
+    data: 'formattedCreditAmount',
+    className: 'right'
+  } )
+
+  
+
+  setActivityTableColumns( 0, columns );
+</script>
+
+                
+                
               
-            
-            
 
-            
-              <li class="list-group-item border-top-0">
-                <div class="row">
-                  <div class="col-md-7">
-                    
-                    <strong>Spring 2024</strong>
+              
+                
+                    </div>
                   </div>
-                  <div class="col-md-5 text-right">
-                    <strong>
-                      
-                        
-                        
-                          $7,710.00
-                        
-                      
-                    </strong>
-                  </div>
-                </div>
-              </li>
-            
+                
+              </div><!-- !displayTermsAccordion ? 'class="panel-body"' : '' -->
+            </div><!-- class="panel panel-default term-panel" -->
           
         
+          
           
           
 
           
           
+          
+          
+          
+          
+          
+          <div class="panel panel-default term-panel">
             
-            
+              
+                <div class="panel-heading chevron" id="termsHeading1_1" tabindex="0" role="button" data-toggle="collapse" data-parent="#termsAccordion" href="#termsCollapse1_1" aria-expanded="true" aria-controls="termsCollapse1_1">
+              
               
             
             
-
-            
-          
-        
-          
-          
-
-          
-          
-            
-            
+              
+              
+              
+                
               
             
-            
-
-            
-          
-        
-          
-          
-
-          
-          
-            
-            
+            <h2 class="row">
+              Summer 2023
               
-            
-            
-
-            
-          
-        
-          
-          
-
-          
-          
-            
-            
+                <span class="pull-right">$1.00</span>
               
-            
-            
+            </h2>
+                </div><!-- panel-heading -->
+            <div>
 
-            
-          
-        
-          
-          
-
-          
-          
-            
-            
               
-            
-            
+                <div id="termsCollapse1_1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="termsHeading1_1" aria-expanded="true" style="">
+                  <div class="panel-body">
+              
 
-            
-          
-        
-          
-          
+              
+              
+              
+              
+              
+              
+              
 
-          
-          
-        
-      
-      
-      
+              <div class="mb-3">
+                <button class="btn btn-default" onclick="printExportFunction( 1 )">
+                  <span>Print</span>
+                  <span class="sr-only"> activity for Student Account and Summer 2023 term</span>
+                </button>
+                <button class="btn btn-default" onclick="excelExportFunction( 1, 'Student Account - Summer 2023' )">
+                  <span class="sr-only">Export activity for Student Account and Summer 2023 term to</span>
+                  <span>Excel</span>
+                </button>
+                <button class="btn btn-default" onclick="pdfExportFunction( 1, 'Student Account - Summer 2023' )">
+                  <span class="sr-only">Export activity for Student Account and Summer 2023 term to</span>
+                  <span>PDF</span>
+                </button>
+              </div>
+
+              
+              
+
+              
+              
+
+              
+              
+
+              
+
+              
+              
+                
+                  
 
 
 
@@ -1818,52 +1538,1355 @@ without having focus on it -->
 
 
 
+
+<h3>Account Activity</h3>
+
+<div class="">
+
+<div id="DataTables_Table_1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"><div id="DataTables_Table_1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="DataTables_Table_1"><span class="sr-only">To submit search query press Enter.</span></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-striped customDataTable dataTable dtr-inline" cellspacing="0" width="100%" data-account-id="19488" data-term-id="30" data-table-id="1" data-export-header="Student Account - Summer 2023 - Account Activity" data-activity-filter="ALL" data-expanded-line-items-exist="false" data-from-date="12/17/23" data-to-date="1/17/24" data-activity-period-id="" data-ajax-url="/C21641_tsa/datatable" id="DataTables_Table_1" role="presentation" style="width: 100%;">
+  <thead>
+  <tr role="row"><th title="Sort by Description" class="sorting" tabindex="-1" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 212px;" aria-label="Description: activate to sort column ascending">Description<span class="arrow-hack"></span></th><th title="Sort by Code" class="sorting" tabindex="-1" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 83px;" aria-label="Code: activate to sort column ascending">Code<span class="arrow-hack"></span></th><th title="Sort by Date" class="sorting_desc" tabindex="-1" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 86px;" aria-sort="descending" aria-label="Date: activate to sort column ascending">Date<span class="arrow-hack"></span></th><th title="Sort by Charges" class="right sorting" tabindex="-1" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 111px;" aria-label="Charges: activate to sort column ascending">Charges<span class="arrow-hack"></span></th><th title="Sort by Credits/Anticipated Credits" class="right sorting" tabindex="-1" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 297px;" aria-label="Credits/Anticipated Credits: activate to sort column ascending">Credits/Anticipated Credits<span class="arrow-hack"></span></th></tr>
+  </thead>
+  <tbody><tr role="row" class="odd cursor-pointer" id="17"><td tabindex="-1" style="font-weight: 500;">Touchnet Payments</td><td>TNET</td><td class="sorting_1">1/5/24</td><td class=" right">--</td><td class=" right">$3,653.00</td></tr><tr role="row" class="even cursor-pointer" id="18"><td tabindex="-1" style="font-weight: 500;">Check Payment</td><td>CHECK</td><td class="sorting_1">10/18/23</td><td class=" right">$3,663.00</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="19"><td tabindex="-1" style="font-weight: 500;">Cash Payment</td><td>CASH</td><td class="sorting_1">10/12/23</td><td class=" right">--</td><td class=" right">$10.00</td></tr><tr role="row" class="even cursor-pointer" id="20"><td tabindex="-1" style="font-weight: 500;">Visa/Mastercard</td><td>VS/MC</td><td class="sorting_1">10/11/23</td><td class=" right">--</td><td class=" right">$1,548.67</td></tr><tr role="row" class="odd cursor-pointer" id="21"><td tabindex="-1" style="font-weight: 500;">Residence Hall Charge</td><td>DORM</td><td class="sorting_1">8/8/23</td><td class=" right">$1,548.67</td><td class=" right">--</td></tr></tbody>
+  <tfoot class="">
+  
+  
+  
+  
+  <tr><td class="text-right right" rowspan="1" colspan="5">
+      <div class="row b-0">
+        <div class="chargesFooterText col-xs-12 col-sm-10">Total Charges:</div>
+        <div class="chargesFooterAmount col-xs-12 col-sm-2 pl-0">$5,211.67</div>
+      </div>
+    </td></tr>
+  <tr><td class="text-right" rowspan="1" colspan="5">
+      <div class="row b-0">
+        <div class="creditsFooterText col-xs-12 col-sm-10">Total Credits/Anticipated Credits:</div>
+        <div class="creditsFooterAmount col-xs-12 col-sm-2 pl-0">$5,211.67</div>
+      </div>
+    </td></tr>
   
     
+      
+      
+        
+          
+          
+          
+            
+            
+          
+        
+      
+      
+      
+    
+
+    
+    
+      
+        
+        
+        
+
+        
+        
+      
+
+      
+    
+
+    
+      
+      <tr class="hidden"><td colspan="5" rowspan="1"></td></tr>
+    
+
+    
+      <tr><td class="text-right" rowspan="1" colspan="5">
+          <div class="row b-0">
+            <div class="firstFooterText col-xs-12 col-sm-10">Term Balance:</div>
+            <div class="firstFooterAmount col-xs-12 col-sm-2 pl-0">$0.00</div>
+          </div>
+        </td></tr>
+    
+    
+      <tr><td class="text-right" rowspan="1" colspan="5">
+          <div class="row b-0">
+            <div class="secondFooterText col-xs-12 col-sm-10">Term Balance Including Estimated Aid:</div>
+            <div class="secondFooterAmount col-xs-12 col-sm-2 pl-0">$0.00</div>
+          </div>
+        </td></tr>
+    
+  
+  </tfoot>
+</table><div id="DataTables_Table_1_processing" class="dataTables_processing panel panel-default" style="display: none;">Processing...</div></div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"></div></div></div>
+
+</div>
+
+<script>
+  var columns = [{data: 'description'}];
+
+  
+    columns.push( {data: 'type'} );
+  
+
+  columns.push( {data: 'date'} );
+
+  
+
+  columns.push( {
+    data: 'formattedChargeAmount',
+    className: 'right'
+  } )
+
+  columns.push( {
+    data: 'formattedCreditAmount',
+    className: 'right'
+  } )
+
+  
+
+  setActivityTableColumns( 1, columns );
+</script>
+
+                
+                
+              
+
+              
+                
+                    </div>
+                  </div>
+                
+              </div><!-- !displayTermsAccordion ? 'class="panel-body"' : '' -->
+            </div><!-- class="panel panel-default term-panel" -->
+          
+        
+          
+          
+          
+
+          
+          
+          
+          
+          
+          
+          
+          <div class="panel panel-default term-panel">
+            
+              
+                <div class="panel-heading chevron collapsed" id="termsHeading1_2" tabindex="0" role="button" data-toggle="collapse" data-parent="#termsAccordion" href="#termsCollapse1_2" aria-expanded="false" aria-controls="termsCollapse1_2">
+              
+              
+            
+            
+              
+              
+              
+                
+              
+            
+            <h2 class="row">
+              Spring 2023
+              
+                <span class="pull-right">$0.00</span>
+              
+            </h2>
+                </div><!-- panel-heading -->
+            <div>
+
+              
+                <div id="termsCollapse1_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="termsHeading1_2" aria-expanded="false">
+                  <div class="panel-body">
+              
+
+              
+              
+              
+              
+              
+              
+              
+
+              <div class="mb-3">
+                <button class="btn btn-default" onclick="printExportFunction( 2 )">
+                  <span>Print</span>
+                  <span class="sr-only"> activity for Student Account and Spring 2023 term</span>
+                </button>
+                <button class="btn btn-default" onclick="excelExportFunction( 2, 'Student Account - Spring 2023' )">
+                  <span class="sr-only">Export activity for Student Account and Spring 2023 term to</span>
+                  <span>Excel</span>
+                </button>
+                <button class="btn btn-default" onclick="pdfExportFunction( 2, 'Student Account - Spring 2023' )">
+                  <span class="sr-only">Export activity for Student Account and Spring 2023 term to</span>
+                  <span>PDF</span>
+                </button>
+              </div>
+
+              
+              
+
+              
+              
+
+              
+              
+
+              
+
+              
+              
+                
+                  
+
+
+
+
+
+
+
+
+
+<h3>Account Activity</h3>
+
+<div class="">
+
+<div id="DataTables_Table_2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"><div id="DataTables_Table_2_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="DataTables_Table_2"><span class="sr-only">To submit search query press Enter.</span></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-striped customDataTable dataTable dtr-inline" cellspacing="0" width="100%" data-account-id="19488" data-term-id="29" data-table-id="2" data-export-header="Student Account - Spring 2023 - Account Activity" data-activity-filter="ALL" data-expanded-line-items-exist="false" data-from-date="12/17/23" data-to-date="1/17/24" data-activity-period-id="" data-ajax-url="/C21641_tsa/datatable" id="DataTables_Table_2" role="presentation" style="width: 100%;">
+  <thead>
+  <tr role="row"><th title="Sort by Description" class="sorting" tabindex="-1" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 0px;" aria-label="Description: activate to sort column ascending">Description<span class="arrow-hack"></span></th><th title="Sort by Code" class="sorting" tabindex="-1" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 0px;" aria-label="Code: activate to sort column ascending">Code<span class="arrow-hack"></span></th><th title="Sort by Date" class="sorting_desc" tabindex="-1" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 0px;" aria-sort="descending" aria-label="Date: activate to sort column ascending">Date<span class="arrow-hack"></span></th><th title="Sort by Charges" class="right sorting" tabindex="-1" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 0px;" aria-label="Charges: activate to sort column ascending">Charges<span class="arrow-hack"></span></th><th title="Sort by Credits/Anticipated Credits" class="right sorting" tabindex="-1" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" style="width: 0px;" aria-label="Credits/Anticipated Credits: activate to sort column ascending">Credits/Anticipated Credits<span class="arrow-hack"></span></th></tr>
+  </thead>
+  <tbody><tr role="row" class="odd cursor-pointer" id="31"><td tabindex="-1" style="font-weight: 500;">Touchnet Payments</td><td>TNET</td><td class="sorting_1">10/10/23</td><td class=" right">--</td><td class=" right">$3,663.00</td></tr><tr role="row" class="even cursor-pointer" id="32"><td tabindex="-1" style="font-weight: 500;">Visa/Mastercard</td><td>VS/MC</td><td class="sorting_1">9/5/23</td><td class=" right">--</td><td class=" right">$9,000.00</td></tr><tr role="row" class="odd cursor-pointer" id="33"><td tabindex="-1" style="font-weight: 500;">Late Payment Fee</td><td>LPINT</td><td class="sorting_1">2/27/23</td><td class=" right">$75.00</td><td class=" right">--</td></tr><tr role="row" class="even cursor-pointer" id="34"><td tabindex="-1" style="font-weight: 500;">General Fee</td><td>GENF</td><td class="sorting_1">1/18/23</td><td class=" right">$1,025.00</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="35"><td tabindex="-1" style="font-weight: 500;">Tuition GR Engineering</td><td>TGREN</td><td class="sorting_1">1/18/23</td><td class=" right">$9,135.00</td><td class=" right">--</td></tr><tr role="row" class="even cursor-pointer" id="36"><td tabindex="-1" style="font-weight: 500;">Student Government Fee</td><td>STGOV</td><td class="sorting_1">1/17/23</td><td class=" right">$120.00</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="37"><td tabindex="-1" style="font-weight: 500;">International Student Fee</td><td>INTFE</td><td class="sorting_1">1/17/23</td><td class=" right">$50.00</td><td class=" right">--</td></tr><tr role="row" class="even cursor-pointer" id="38"><td tabindex="-1" style="font-weight: 500;">Engineering Fee Grad</td><td>ENFGR</td><td class="sorting_1">1/17/23</td><td class=" right">$510.00</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="39"><td tabindex="-1" style="font-weight: 500;">Residence Hall Charge</td><td>DORM</td><td class="sorting_1">1/9/23</td><td class=" right">$1,748.00</td><td class=" right">--</td></tr></tbody>
+  <tfoot class="">
+  
+  
+  
+  
+  <tr><td class="text-right right" rowspan="1" colspan="5">
+      <div class="row b-0">
+        <div class="chargesFooterText col-xs-12 col-sm-10">Total Charges:</div>
+        <div class="chargesFooterAmount col-xs-12 col-sm-2 pl-0">$12,825.00</div>
+      </div>
+    </td></tr>
+  <tr><td class="text-right" rowspan="1" colspan="5">
+      <div class="row b-0">
+        <div class="creditsFooterText col-xs-12 col-sm-10">Total Credits/Anticipated Credits:</div>
+        <div class="creditsFooterAmount col-xs-12 col-sm-2 pl-0">$12,825.00</div>
+      </div>
+    </td></tr>
+  
+    
+      
+      
+        
+          
+          
+          
+            
+            
+          
+        
+      
+      
+      
+    
+
+    
+    
+      
+        
+        
+        
+
+        
+        
+      
+
+      
+    
+
+    
+      
+      <tr class="hidden"><td colspan="5" rowspan="1"></td></tr>
+    
+
+    
+      <tr><td class="text-right" rowspan="1" colspan="5">
+          <div class="row b-0">
+            <div class="firstFooterText col-xs-12 col-sm-10">Term Balance:</div>
+            <div class="firstFooterAmount col-xs-12 col-sm-2 pl-0">$0.00</div>
+          </div>
+        </td></tr>
+    
+    
+      <tr><td class="text-right" rowspan="1" colspan="5">
+          <div class="row b-0">
+            <div class="secondFooterText col-xs-12 col-sm-10">Term Balance Including Estimated Aid:</div>
+            <div class="secondFooterAmount col-xs-12 col-sm-2 pl-0">$0.00</div>
+          </div>
+        </td></tr>
+    
+  
+  </tfoot>
+</table><div id="DataTables_Table_2_processing" class="dataTables_processing panel panel-default" style="display: none;">Processing...</div></div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"></div></div></div>
+
+</div>
+
+<script>
+  var columns = [{data: 'description'}];
+
+  
+    columns.push( {data: 'type'} );
+  
+
+  columns.push( {data: 'date'} );
+
+  
+
+  columns.push( {
+    data: 'formattedChargeAmount',
+    className: 'right'
+  } )
+
+  columns.push( {
+    data: 'formattedCreditAmount',
+    className: 'right'
+  } )
+
+  
+
+  setActivityTableColumns( 2, columns );
+</script>
+
+                
+                
+              
+
+              
+                
+                    </div>
+                  </div>
+                
+              </div><!-- !displayTermsAccordion ? 'class="panel-body"' : '' -->
+            </div><!-- class="panel panel-default term-panel" -->
+          
+        
+          
+          
+          
+
+          
+          
+          
+          
+          
+          
+          
+          <div class="panel panel-default term-panel">
+            
+              
+                <div class="panel-heading chevron collapsed" id="termsHeading1_3" tabindex="0" role="button" data-toggle="collapse" data-parent="#termsAccordion" href="#termsCollapse1_3" aria-expanded="false" aria-controls="termsCollapse1_3">
+              
+              
+            
+            
+              
+              
+              
+                
+              
+            
+            <h2 class="row">
+              Fall 2023
+              
+                <span class="pull-right">$0.00</span>
+              
+            </h2>
+                </div><!-- panel-heading -->
+            <div>
+
+              
+                <div id="termsCollapse1_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="termsHeading1_3" aria-expanded="false">
+                  <div class="panel-body">
+              
+
+              
+              
+              
+              
+              
+              
+              
+
+              <div class="mb-3">
+                <button class="btn btn-default" onclick="printExportFunction( 3 )">
+                  <span>Print</span>
+                  <span class="sr-only"> activity for Student Account and Fall 2023 term</span>
+                </button>
+                <button class="btn btn-default" onclick="excelExportFunction( 3, 'Student Account - Fall 2023' )">
+                  <span class="sr-only">Export activity for Student Account and Fall 2023 term to</span>
+                  <span>Excel</span>
+                </button>
+                <button class="btn btn-default" onclick="pdfExportFunction( 3, 'Student Account - Fall 2023' )">
+                  <span class="sr-only">Export activity for Student Account and Fall 2023 term to</span>
+                  <span>PDF</span>
+                </button>
+              </div>
+
+              
+              
+
+              
+              
+
+              
+              
+
+              
+
+              
+              
+                
+                  
+
+
+
+
+
+
+
+
+
+<h3>Account Activity</h3>
+
+<div class="">
+
+<div id="DataTables_Table_3_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"><div id="DataTables_Table_3_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="DataTables_Table_3"><span class="sr-only">To submit search query press Enter.</span></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-striped customDataTable dataTable dtr-inline" cellspacing="0" width="100%" data-account-id="19488" data-term-id="31" data-table-id="3" data-export-header="Student Account - Fall 2023 - Account Activity" data-activity-filter="ALL" data-expanded-line-items-exist="false" data-from-date="12/17/23" data-to-date="1/17/24" data-activity-period-id="" data-ajax-url="/C21641_tsa/datatable" id="DataTables_Table_3" role="presentation" style="width: 100%;">
+  <thead>
+  <tr role="row"><th title="Sort by Description" class="sorting" tabindex="-1" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 0px;" aria-label="Description: activate to sort column ascending">Description<span class="arrow-hack"></span></th><th title="Sort by Code" class="sorting" tabindex="-1" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 0px;" aria-label="Code: activate to sort column ascending">Code<span class="arrow-hack"></span></th><th title="Sort by Date" class="sorting_desc" tabindex="-1" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 0px;" aria-sort="descending" aria-label="Date: activate to sort column ascending">Date<span class="arrow-hack"></span></th><th title="Sort by Charges" class="right sorting" tabindex="-1" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 0px;" aria-label="Charges: activate to sort column ascending">Charges<span class="arrow-hack"></span></th><th title="Sort by Credits/Anticipated Credits" class="right sorting" tabindex="-1" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" style="width: 0px;" aria-label="Credits/Anticipated Credits: activate to sort column ascending">Credits/Anticipated Credits<span class="arrow-hack"></span></th></tr>
+  </thead>
+  <tbody><tr role="row" class="odd cursor-pointer" id="55"><td tabindex="-1" style="font-weight: 500;">Touchnet Payments</td><td>TNET</td><td class="sorting_1">1/5/24</td><td class=" right">--</td><td class=" right">$3,312.67</td></tr><tr role="row" class="even cursor-pointer" id="56"><td tabindex="-1" style="font-weight: 500;">Residence Hall Charge</td><td>DORM</td><td class="sorting_1">10/23/23</td><td class=" right">$966.00</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="57"><td tabindex="-1" style="font-weight: 500;">NSF Charge</td><td>NSF</td><td class="sorting_1">10/19/23</td><td class=" right">$50.00</td><td class=" right">--</td></tr><tr role="row" class="even cursor-pointer" id="58"><td tabindex="-1" style="font-weight: 500;">Check Payment</td><td>CHECK</td><td class="sorting_1">10/18/23</td><td class=" right">$2,221.67</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="59"><td tabindex="-1" style="font-weight: 500;">Late Payment Fee</td><td>LPINT</td><td class="sorting_1">9/8/23</td><td class=" right">$75.00</td><td class=" right">--</td></tr></tbody>
+  <tfoot class="">
+  
+  
+  
+  
+  <tr><td class="text-right right" rowspan="1" colspan="5">
+      <div class="row b-0">
+        <div class="chargesFooterText col-xs-12 col-sm-10">Total Charges:</div>
+        <div class="chargesFooterAmount col-xs-12 col-sm-2 pl-0">$14,511.67</div>
+      </div>
+    </td></tr>
+  <tr><td class="text-right" rowspan="1" colspan="5">
+      <div class="row b-0">
+        <div class="creditsFooterText col-xs-12 col-sm-10">Total Credits/Anticipated Credits:</div>
+        <div class="creditsFooterAmount col-xs-12 col-sm-2 pl-0">$14,511.67</div>
+      </div>
+    </td></tr>
+  
+    
+      
+      
+        
+          
+          
+          
+            
+            
+          
+        
+      
+      
+      
+    
+
+    
+    
+      
+        
+        
+        
+
+        
+        
+      
+
+      
+    
+
+    
+      
+      <tr class="hidden"><td colspan="5" rowspan="1"></td></tr>
+    
+
+    
+      <tr><td class="text-right" rowspan="1" colspan="5">
+          <div class="row b-0">
+            <div class="firstFooterText col-xs-12 col-sm-10">Term Balance:</div>
+            <div class="firstFooterAmount col-xs-12 col-sm-2 pl-0">$0.00</div>
+          </div>
+        </td></tr>
+    
+    
+      <tr><td class="text-right" rowspan="1" colspan="5">
+          <div class="row b-0">
+            <div class="secondFooterText col-xs-12 col-sm-10">Term Balance Including Estimated Aid:</div>
+            <div class="secondFooterAmount col-xs-12 col-sm-2 pl-0">$0.00</div>
+          </div>
+        </td></tr>
+    
+  
+  </tfoot>
+</table><div id="DataTables_Table_3_processing" class="dataTables_processing panel panel-default" style="display: none;">Processing...</div></div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"></div></div></div>
+
+</div>
+
+<script>
+  var columns = [{data: 'description'}];
+
+  
+    columns.push( {data: 'type'} );
+  
+
+  columns.push( {data: 'date'} );
+
+  
+
+  columns.push( {
+    data: 'formattedChargeAmount',
+    className: 'right'
+  } )
+
+  columns.push( {
+    data: 'formattedCreditAmount',
+    className: 'right'
+  } )
+
+  
+
+  setActivityTableColumns( 3, columns );
+</script>
+
+                
+                
+              
+
+              
+                
+                    </div>
+                  </div>
+                
+              </div><!-- !displayTermsAccordion ? 'class="panel-body"' : '' -->
+            </div><!-- class="panel panel-default term-panel" -->
+          
+        
+          
+          
+          
+
+          
+          
+          
+          
+          
+          
+          
+          <div class="panel panel-default term-panel">
+            
+              
+                <div class="panel-heading chevron collapsed" id="termsHeading1_4" tabindex="0" role="button" data-toggle="collapse" data-parent="#termsAccordion" href="#termsCollapse1_4" aria-expanded="false" aria-controls="termsCollapse1_4">
+              
+              
+            
+            
+              
+              
+              
+                
+              
+            
+            <h2 class="row">
+              Summer 2022
+              
+                <span class="pull-right">$0.00</span>
+              
+            </h2>
+                </div><!-- panel-heading -->
+            <div>
+
+              
+                <div id="termsCollapse1_4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="termsHeading1_4" aria-expanded="false">
+                  <div class="panel-body">
+              
+
+              
+              
+              
+              
+              
+              
+              
+
+              <div class="mb-3">
+                <button class="btn btn-default" onclick="printExportFunction( 4 )">
+                  <span>Print</span>
+                  <span class="sr-only"> activity for Student Account and Summer 2022 term</span>
+                </button>
+                <button class="btn btn-default" onclick="excelExportFunction( 4, 'Student Account - Summer 2022' )">
+                  <span class="sr-only">Export activity for Student Account and Summer 2022 term to</span>
+                  <span>Excel</span>
+                </button>
+                <button class="btn btn-default" onclick="pdfExportFunction( 4, 'Student Account - Summer 2022' )">
+                  <span class="sr-only">Export activity for Student Account and Summer 2022 term to</span>
+                  <span>PDF</span>
+                </button>
+              </div>
+
+              
+              
+
+              
+              
+
+              
+              
+
+              
+
+              
+              
+                
+                  
+
+
+
+
+
+
+
+
+
+<h3>Account Activity</h3>
+
+<div class="">
+
+<div id="DataTables_Table_4_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"><div id="DataTables_Table_4_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="DataTables_Table_4"><span class="sr-only">To submit search query press Enter.</span></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-striped customDataTable dataTable dtr-inline" cellspacing="0" width="100%" data-account-id="19488" data-term-id="27" data-table-id="4" data-export-header="Student Account - Summer 2022 - Account Activity" data-activity-filter="ALL" data-expanded-line-items-exist="false" data-from-date="12/17/23" data-to-date="1/17/24" data-activity-period-id="" data-ajax-url="/C21641_tsa/datatable" id="DataTables_Table_4" role="presentation" style="width: 100%;">
+  <thead>
+  <tr role="row"><th title="Sort by Description" class="sorting" tabindex="-1" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 0px;" aria-label="Description: activate to sort column ascending">Description<span class="arrow-hack"></span></th><th title="Sort by Code" class="sorting" tabindex="-1" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 0px;" aria-label="Code: activate to sort column ascending">Code<span class="arrow-hack"></span></th><th title="Sort by Date" class="sorting_desc" tabindex="-1" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 0px;" aria-sort="descending" aria-label="Date: activate to sort column ascending">Date<span class="arrow-hack"></span></th><th title="Sort by Charges" class="right sorting" tabindex="-1" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 0px;" aria-label="Charges: activate to sort column ascending">Charges<span class="arrow-hack"></span></th><th title="Sort by Credits/Anticipated Credits" class="right sorting" tabindex="-1" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 0px;" aria-label="Credits/Anticipated Credits: activate to sort column ascending">Credits/Anticipated Credits<span class="arrow-hack"></span></th></tr>
+  </thead>
+  <tbody><tr role="row" class="odd cursor-pointer" id="40"><td tabindex="-1" style="font-weight: 500;">Visa/Mastercard</td><td>VS/MC</td><td class="sorting_1">9/2/22</td><td class=" right">--</td><td class=" right">$7,061.00</td></tr><tr role="row" class="even cursor-pointer" id="41"><td tabindex="-1" style="font-weight: 500;">Intl Grad Merit Award</td><td>UI4</td><td class="sorting_1">7/13/22</td><td class=" right">--</td><td class=" right">$1,500.00</td></tr><tr role="row" class="odd cursor-pointer" id="42"><td tabindex="-1" style="font-weight: 500;">Deposit Allocation</td><td>DEP</td><td class="sorting_1">5/25/22</td><td class=" right">--</td><td class=" right">$7,850.00</td></tr><tr role="row" class="even cursor-pointer" id="43"><td tabindex="-1" style="font-weight: 500;">Check Payment</td><td>CHECK</td><td class="sorting_1">5/23/22</td><td class=" right">$5,000.00</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="44"><td tabindex="-1" style="font-weight: 500;">Student Health Insurance</td><td>INSH</td><td class="sorting_1">5/16/22</td><td class=" right">$506.00</td><td class=" right">--</td></tr><tr role="row" class="even cursor-pointer" id="45"><td tabindex="-1" style="font-weight: 500;">Add/ Drop Fee</td><td>ADF</td><td class="sorting_1">5/11/22</td><td class=" right">$35.00</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="46"><td tabindex="-1" style="font-weight: 500;">General Fee</td><td>GENF</td><td class="sorting_1">5/11/22</td><td class=" right">$1,025.00</td><td class=" right">--</td></tr><tr role="row" class="even cursor-pointer" id="47"><td tabindex="-1" style="font-weight: 500;">Engineering Fee Grad</td><td>ENFGR</td><td class="sorting_1">5/11/22</td><td class=" right">$510.00</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="48"><td tabindex="-1" style="font-weight: 500;">Tuition GR Engineering</td><td>TGREN</td><td class="sorting_1">5/11/22</td><td class=" right">$9,135.00</td><td class=" right">--</td></tr><tr role="row" class="even cursor-pointer" id="49"><td tabindex="-1" style="font-weight: 500;">New Student Orientation Fee</td><td>ORFEE</td><td class="sorting_1">5/11/22</td><td class=" right">$200.00</td><td class=" right">--</td></tr></tbody>
+  <tfoot class="">
+  
+  
+  
+  
+  <tr><td class="text-right right" rowspan="1" colspan="5">
+      <div class="row b-0">
+        <div class="chargesFooterText col-xs-12 col-sm-10">Total Charges:</div>
+        <div class="chargesFooterAmount col-xs-12 col-sm-2 pl-0">$16,411.00</div>
+      </div>
+    </td></tr>
+  <tr><td class="text-right" rowspan="1" colspan="5">
+      <div class="row b-0">
+        <div class="creditsFooterText col-xs-12 col-sm-10">Total Credits/Anticipated Credits:</div>
+        <div class="creditsFooterAmount col-xs-12 col-sm-2 pl-0">$16,411.00</div>
+      </div>
+    </td></tr>
+  
+    
+      
+      
+        
+          
+          
+          
+            
+            
+          
+        
+      
+      
+      
+    
+
+    
+    
+      
+        
+        
+        
+
+        
+        
+      
+
+      
+    
+
+    
+      
+      <tr class="hidden"><td colspan="5" rowspan="1"></td></tr>
+    
+
+    
+      <tr><td class="text-right" rowspan="1" colspan="5">
+          <div class="row b-0">
+            <div class="firstFooterText col-xs-12 col-sm-10">Term Balance:</div>
+            <div class="firstFooterAmount col-xs-12 col-sm-2 pl-0">$0.00</div>
+          </div>
+        </td></tr>
+    
+    
+      <tr><td class="text-right" rowspan="1" colspan="5">
+          <div class="row b-0">
+            <div class="secondFooterText col-xs-12 col-sm-10">Term Balance Including Estimated Aid:</div>
+            <div class="secondFooterAmount col-xs-12 col-sm-2 pl-0">$0.00</div>
+          </div>
+        </td></tr>
+    
+  
+  </tfoot>
+</table><div id="DataTables_Table_4_processing" class="dataTables_processing panel panel-default" style="display: none;">Processing...</div></div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"></div></div></div>
+
+</div>
+
+<script>
+  var columns = [{data: 'description'}];
+
+  
+    columns.push( {data: 'type'} );
+  
+
+  columns.push( {data: 'date'} );
+
+  
+
+  columns.push( {
+    data: 'formattedChargeAmount',
+    className: 'right'
+  } )
+
+  columns.push( {
+    data: 'formattedCreditAmount',
+    className: 'right'
+  } )
+
+  
+
+  setActivityTableColumns( 4, columns );
+</script>
+
+                
+                
+              
+
+              
+                
+                    </div>
+                  </div>
+                
+              </div><!-- !displayTermsAccordion ? 'class="panel-body"' : '' -->
+            </div><!-- class="panel panel-default term-panel" -->
+          
+        
+          
+          
+          
+
+          
+          
+          
+          
+          
+          
+          
+          <div class="panel panel-default term-panel">
+            
+              
+                <div class="panel-heading chevron collapsed" id="termsHeading1_5" tabindex="0" role="button" data-toggle="collapse" data-parent="#termsAccordion" href="#termsCollapse1_5" aria-expanded="false" aria-controls="termsCollapse1_5">
+              
+              
+            
+            
+              
+              
+              
+                
+              
+            
+            <h2 class="row">
+              Fall 2022
+              
+                <span class="pull-right">$0.00</span>
+              
+            </h2>
+                </div><!-- panel-heading -->
+            <div>
+
+              
+                <div id="termsCollapse1_5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="termsHeading1_5" aria-expanded="false">
+                  <div class="panel-body">
+              
+
+              
+              
+              
+              
+              
+              
+              
+
+              <div class="mb-3">
+                <button class="btn btn-default" onclick="printExportFunction( 5 )">
+                  <span>Print</span>
+                  <span class="sr-only"> activity for Student Account and Fall 2022 term</span>
+                </button>
+                <button class="btn btn-default" onclick="excelExportFunction( 5, 'Student Account - Fall 2022' )">
+                  <span class="sr-only">Export activity for Student Account and Fall 2022 term to</span>
+                  <span>Excel</span>
+                </button>
+                <button class="btn btn-default" onclick="pdfExportFunction( 5, 'Student Account - Fall 2022' )">
+                  <span class="sr-only">Export activity for Student Account and Fall 2022 term to</span>
+                  <span>PDF</span>
+                </button>
+              </div>
+
+              
+              
+
+              
+              
+
+              
+              
+
+              
+
+              
+              
+                
+                  
+
+
+
+
+
+
+
+
+
+<h3>Account Activity</h3>
+
+<div class="">
+
+<div id="DataTables_Table_5_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"><div id="DataTables_Table_5_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="DataTables_Table_5"><span class="sr-only">To submit search query press Enter.</span></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-striped customDataTable dataTable dtr-inline" cellspacing="0" width="100%" data-account-id="19488" data-term-id="28" data-table-id="5" data-export-header="Student Account - Fall 2022 - Account Activity" data-activity-filter="ALL" data-expanded-line-items-exist="false" data-from-date="12/17/23" data-to-date="1/17/24" data-activity-period-id="" data-ajax-url="/C21641_tsa/datatable" id="DataTables_Table_5" role="presentation" style="width: 100%;">
+  <thead>
+  <tr role="row"><th title="Sort by Description" class="sorting" tabindex="-1" aria-controls="DataTables_Table_5" rowspan="1" colspan="1" style="width: 0px;" aria-label="Description: activate to sort column ascending">Description<span class="arrow-hack"></span></th><th title="Sort by Code" class="sorting" tabindex="-1" aria-controls="DataTables_Table_5" rowspan="1" colspan="1" style="width: 0px;" aria-label="Code: activate to sort column ascending">Code<span class="arrow-hack"></span></th><th title="Sort by Date" class="sorting_desc" tabindex="-1" aria-controls="DataTables_Table_5" rowspan="1" colspan="1" style="width: 0px;" aria-sort="descending" aria-label="Date: activate to sort column ascending">Date<span class="arrow-hack"></span></th><th title="Sort by Charges" class="right sorting" tabindex="-1" aria-controls="DataTables_Table_5" rowspan="1" colspan="1" style="width: 0px;" aria-label="Charges: activate to sort column ascending">Charges<span class="arrow-hack"></span></th><th title="Sort by Credits/Anticipated Credits" class="right sorting" tabindex="-1" aria-controls="DataTables_Table_5" rowspan="1" colspan="1" style="width: 0px;" aria-label="Credits/Anticipated Credits: activate to sort column ascending">Credits/Anticipated Credits<span class="arrow-hack"></span></th></tr>
+  </thead>
+  <tbody><tr role="row" class="odd cursor-pointer" id="73"><td tabindex="-1" style="font-weight: 500;">Visa/Mastercard</td><td>VS/MC</td><td class="sorting_1">3/27/23</td><td class=" right">--</td><td class=" right">$9,691.33</td></tr><tr role="row" class="even cursor-pointer" id="74"><td tabindex="-1" style="font-weight: 500;">Touchnet Payments</td><td>TNET</td><td class="sorting_1">11/29/22</td><td class=" right">--</td><td class=" right">$2,000.00</td></tr><tr role="row" class="odd cursor-pointer" id="75"><td tabindex="-1" style="font-weight: 500;">Deposit Allocation</td><td>DEP</td><td class="sorting_1">11/10/22</td><td class=" right">--</td><td class=" right">$250.00</td></tr><tr role="row" class="even cursor-pointer" id="76"><td tabindex="-1" style="font-weight: 500;">Residence Hall Charge</td><td>DORM</td><td class="sorting_1">10/28/22</td><td class=" right">$981.33</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="77"><td tabindex="-1" style="font-weight: 500;">Graduate Housing Maintenance</td><td>NSMT</td><td class="sorting_1">10/28/22</td><td class=" right">$125.00</td><td class=" right">--</td></tr><tr role="row" class="even cursor-pointer" id="78"><td tabindex="-1" style="font-weight: 500;">Graduate Housing Deposit (Barn</td><td>NSDP</td><td class="sorting_1">10/28/22</td><td class=" right">$250.00</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="79"><td tabindex="-1" style="font-weight: 500;">Intl Grad Merit Award</td><td>UI4</td><td class="sorting_1">9/26/22</td><td class=" right">--</td><td class=" right">$1,500.00</td></tr><tr role="row" class="even cursor-pointer" id="80"><td tabindex="-1" style="font-weight: 500;">Tuition GR Engineering</td><td>TGREN</td><td class="sorting_1">9/5/22</td><td class=" right">$8,190.00</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="81"><td tabindex="-1" style="font-weight: 500;">General Fee</td><td>GENF</td><td class="sorting_1">9/5/22</td><td class=" right">$1,025.00</td><td class=" right">--</td></tr><tr role="row" class="even cursor-pointer" id="82"><td tabindex="-1" style="font-weight: 500;">International Student Fee</td><td>INTFE</td><td class="sorting_1">9/4/22</td><td class=" right">$50.00</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="83"><td tabindex="-1" style="font-weight: 500;">Student Government Fee</td><td>STGOV</td><td class="sorting_1">9/4/22</td><td class=" right">$120.00</td><td class=" right">--</td></tr><tr role="row" class="even cursor-pointer" id="84"><td tabindex="-1" style="font-weight: 500;">Engineering Fee Grad</td><td>ENFGR</td><td class="sorting_1">9/4/22</td><td class=" right">$510.00</td><td class=" right">--</td></tr><tr role="row" class="odd cursor-pointer" id="85"><td tabindex="-1" style="font-weight: 500;">Student Health Insurance</td><td>INSH</td><td class="sorting_1">9/4/22</td><td class=" right">$2,190.00</td><td class=" right">--</td></tr></tbody>
+  <tfoot class="">
+  
+  
+  
+  
+  <tr><td class="text-right right" rowspan="1" colspan="5">
+      <div class="row b-0">
+        <div class="chargesFooterText col-xs-12 col-sm-10">Total Charges:</div>
+        <div class="chargesFooterAmount col-xs-12 col-sm-2 pl-0">$13,441.33</div>
+      </div>
+    </td></tr>
+  <tr><td class="text-right" rowspan="1" colspan="5">
+      <div class="row b-0">
+        <div class="creditsFooterText col-xs-12 col-sm-10">Total Credits/Anticipated Credits:</div>
+        <div class="creditsFooterAmount col-xs-12 col-sm-2 pl-0">$13,441.33</div>
+      </div>
+    </td></tr>
+  
+    
+      
+      
+        
+          
+          
+          
+            
+            
+          
+        
+      
+      
+      
+    
+
+    
+    
+      
+        
+        
+        
+
+        
+        
+      
+
+      
+    
+
+    
+      
+      <tr class="hidden"><td colspan="5" rowspan="1"></td></tr>
+    
+
+    
+      <tr><td class="text-right" rowspan="1" colspan="5">
+          <div class="row b-0">
+            <div class="firstFooterText col-xs-12 col-sm-10">Term Balance:</div>
+            <div class="firstFooterAmount col-xs-12 col-sm-2 pl-0">$0.00</div>
+          </div>
+        </td></tr>
+    
+    
+      <tr><td class="text-right" rowspan="1" colspan="5">
+          <div class="row b-0">
+            <div class="secondFooterText col-xs-12 col-sm-10">Term Balance Including Estimated Aid:</div>
+            <div class="secondFooterAmount col-xs-12 col-sm-2 pl-0">$0.00</div>
+          </div>
+        </td></tr>
+    
+  
+  </tfoot>
+</table><div id="DataTables_Table_5_processing" class="dataTables_processing panel panel-default" style="display: none;">Processing...</div></div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"></div></div></div>
+
+</div>
+
+<script>
+  var columns = [{data: 'description'}];
+
+  
+    columns.push( {data: 'type'} );
+  
+
+  columns.push( {data: 'date'} );
+
+  
+
+  columns.push( {
+    data: 'formattedChargeAmount',
+    className: 'right'
+  } )
+
+  columns.push( {
+    data: 'formattedCreditAmount',
+    className: 'right'
+  } )
+
+  
+
+  setActivityTableColumns( 5, columns );
+</script>
+
+                
+                
+              
+
+              
+                
+                    </div>
+                  </div>
+                
+              </div><!-- !displayTermsAccordion ? 'class="panel-body"' : '' -->
+            </div><!-- class="panel panel-default term-panel" -->
+          
+        
+          
+          
+          
+
+          
+          
+          
+          
+          
+          
+          
+          <div class="panel panel-default term-panel">
+            
+              
+                <div class="panel-heading chevron collapsed" id="termsHeading1_6" tabindex="0" role="button" data-toggle="collapse" data-parent="#termsAccordion" href="#termsCollapse1_6" aria-expanded="false" aria-controls="termsCollapse1_6">
+              
+              
+            
+            
+              
+              
+                
+              
+              
+            
+            <h2 class="row">
+              Other Activity
+              
+                <span class="pull-right">$10.00</span>
+              
+            </h2>
+                </div><!-- panel-heading -->
+            <div>
+
+              
+                <div id="termsCollapse1_6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="termsHeading1_6" aria-expanded="false">
+                  <div class="panel-body">
+              
+
+              
+              
+              
+              
+              
+              
+              
+
+              <div class="mb-3">
+                <button class="btn btn-default" onclick="printExportFunction( 6 )">
+                  <span>Print</span>
+                  <span class="sr-only"> activity for Student Account and Other Activity term</span>
+                </button>
+                <button class="btn btn-default" onclick="excelExportFunction( 6, 'Student Account - Other Activity' )">
+                  <span class="sr-only">Export activity for Student Account and Other Activity term to</span>
+                  <span>Excel</span>
+                </button>
+                <button class="btn btn-default" onclick="pdfExportFunction( 6, 'Student Account - Other Activity' )">
+                  <span class="sr-only">Export activity for Student Account and Other Activity term to</span>
+                  <span>PDF</span>
+                </button>
+              </div>
+
+              
+              
+
+              
+              
+
+              
+              
+
+              
+
+              
+              
+                
+                  
+
+
+
+
+
+
+
+
+
+<h3>Account Activity</h3>
+
+<div class="">
+
+<div id="DataTables_Table_6_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"><div id="DataTables_Table_6_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="DataTables_Table_6"><span class="sr-only">To submit search query press Enter.</span></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-striped customDataTable dataTable dtr-inline" cellspacing="0" width="100%" data-account-id="19488" data-term-id="OTHER_CHARGES" data-table-id="6" data-export-header="Student Account - Other Activity - Account Activity" data-activity-filter="ALL" data-expanded-line-items-exist="false" data-from-date="12/17/23" data-to-date="1/17/24" data-activity-period-id="" data-ajax-url="/C21641_tsa/datatable" id="DataTables_Table_6" role="presentation" style="width: 100%;">
+  <thead>
+  <tr role="row"><th title="Sort by Description" class="sorting" tabindex="-1" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 0px;" aria-label="Description: activate to sort column ascending">Description<span class="arrow-hack"></span></th><th title="Sort by Code" class="sorting" tabindex="-1" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 0px;" aria-label="Code: activate to sort column ascending">Code<span class="arrow-hack"></span></th><th title="Sort by Date" class="sorting_desc" tabindex="-1" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 0px;" aria-sort="descending" aria-label="Date: activate to sort column ascending">Date<span class="arrow-hack"></span></th><th title="Sort by Charges" class="right sorting" tabindex="-1" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 0px;" aria-label="Charges: activate to sort column ascending">Charges<span class="arrow-hack"></span></th><th title="Sort by Credits/Anticipated Credits" class="right sorting" tabindex="-1" aria-controls="DataTables_Table_6" rowspan="1" colspan="1" style="width: 0px;" aria-label="Credits/Anticipated Credits: activate to sort column ascending">Credits/Anticipated Credits<span class="arrow-hack"></span></th></tr>
+  </thead>
+  <tbody><tr role="row" class="odd cursor-pointer" id="97"><td tabindex="-1" style="font-weight: 500;">Transcript Charge</td><td>TRANS</td><td class="sorting_1">10/12/23</td><td class=" right">$10.00</td><td class=" right">--</td></tr></tbody>
+  <tfoot class="">
+  
+  
+  
+  
+  <tr><td class="text-right right" rowspan="1" colspan="5">
+      <div class="row b-0">
+        <div class="chargesFooterText col-xs-12 col-sm-10">Total Charges:</div>
+        <div class="chargesFooterAmount col-xs-12 col-sm-2 pl-0">$10.00</div>
+      </div>
+    </td></tr>
+  <tr><td class="text-right" rowspan="1" colspan="5">
+      <div class="row b-0">
+        <div class="creditsFooterText col-xs-12 col-sm-10">Total Credits/Anticipated Credits:</div>
+        <div class="creditsFooterAmount col-xs-12 col-sm-2 pl-0">$0.00</div>
+      </div>
+    </td></tr>
+  
+    
+      
+      
+        
+          
+            
+            
+          
+          
+          
+        
+      
+      
+      
+    
+
+    
+    
+      
+        
+        
+        
+
+        
+        
+      
+
+      
+    
+
+    
+      
+      <tr class="hidden"><td colspan="5" rowspan="1"></td></tr>
+    
+
+    
+      <tr><td class="text-right" rowspan="1" colspan="5">
+          <div class="row b-0">
+            <div class="firstFooterText col-xs-12 col-sm-10">Other (Non-term) Balance:</div>
+            <div class="firstFooterAmount col-xs-12 col-sm-2 pl-0">$10.00</div>
+          </div>
+        </td></tr>
+    
+    
+  
+  </tfoot>
+</table><div id="DataTables_Table_6_processing" class="dataTables_processing panel panel-default" style="display: none;">Processing...</div></div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"></div></div></div>
+
+</div>
+
+<script>
+  var columns = [{data: 'description'}];
+
+  
+    columns.push( {data: 'type'} );
+  
+
+  columns.push( {data: 'date'} );
+
+  
+
+  columns.push( {
+    data: 'formattedChargeAmount',
+    className: 'right'
+  } )
+
+  columns.push( {
+    data: 'formattedCreditAmount',
+    className: 'right'
+  } )
+
+  
+
+  setActivityTableColumns( 6, columns );
+</script>
+
+                
+                
+              
+
+              
+                
+                    </div>
+                  </div>
+                
+              </div><!-- !displayTermsAccordion ? 'class="panel-body"' : '' -->
+            </div><!-- class="panel panel-default term-panel" -->
+          
+        
+
+        
+          </div>
+        
+        
+      </div><!-- !displayAccordion ? 'class="panel-body"' : '' -->
+    </div><!-- panel panel-default activities-panel -->
   
 
 
 
 
-  <li class="list-group-item border-top-0">
-    <div class="row">
-      <div class="col-md-7">
-        <strong>Other Activity</strong>
-      </div>
-      <div class="col-md-5 text-right">
-        <strong>
-            $10.00
-        </strong>
+
+
+              
+
+
+            </div>
+          
+          
+        
       </div>
     </div>
-  </li>
-
-
-    </ul>
   </div>
 
+  
+    
+    <form name="PrintForm" action="/C21641_tsa/tapp" method="get" target="viewStatement"><input type="hidden" name="tapp-stoken" value="QLlfw4RxfTw">
+      <input type="hidden" id="Navigate_PF" name="Navigate" value="print_statement.jsp">
+      <input type="hidden" id="OnError_PF" name="OnError" value="current_activity.jsp">
+      <input type="hidden" id="PRINT_STMT_ID_PF" name="PRINT_STMT_ID" value="296776">
+      <input type="hidden" id="STMT_ID_PF" name="STMT_ID" value="296776">
+      <input type="hidden" name="REDIRECT" value="true">
+    </form>
+  
+</div>
 
-          
+<script>
+  
+    $( "#activityButtons" ).removeClass( 'hidden' );
 
+    
+      $( "#expandCollapseBtn" ).removeClass( 'hidden' );
+    
+  
 
+  var isClicked = false;
+  function explainVoluntaryFee( vfiId, actId )
+  {
+    var feeDesc = {};
+    var descriptionDiv = $('#VFI_DESC_' + vfiId + actId);
 
+    
 
+    
 
+    if ( feeDesc[vfiId] == null || descriptionDiv.length === 0 )
+    {
+      return;
+    }
 
+    descriptionDiv.toggleClass("hidden");
+    var vfiDescInnerDiv = $( '<div>' );
+    var buttonsDiv = $( '<div class="text-right">' );
+    var descDiv = $('<div>' );
+    descDiv.append( document.createTextNode( feeDesc[vfiId] ) );
+    vfiDescInnerDiv.append( descDiv );
+    var currentActivityDeclineFeeAnchor = $( '<a id="currentActivityDeclineFee" title="Decline" class="btn btn-warning" href="javascript:declineFee( ' + vfiId + ' )">' );
+    currentActivityDeclineFeeAnchor.append( document.createTextNode( 'Decline' ) );
+    buttonsDiv.append( currentActivityDeclineFeeAnchor );
+    buttonsDiv.append( ' ' );
+    var currentActivityCollapseFeeAnchor = $( '<a id="currentActivityCollapseFee" title="Accept" class="btn btn-primary" href="javascript:collapseFee( ' + vfiId + actId + ' )">' );
+    currentActivityCollapseFeeAnchor.append( document.createTextNode( 'Accept' ) );
+    buttonsDiv.append( currentActivityCollapseFeeAnchor );
+    vfiDescInnerDiv.append( buttonsDiv );
+    vfiDescInnerDiv.append( ' ' );
 
+    // New 'vfiDescInnerDiv' must be added to the DOM *before* setting css properties below
+    descriptionDiv.html( vfiDescInnerDiv );
 
+    vfiDescInnerDiv.css( {
+      textAlign: 'left',
+      position: 'relative',
+      width: '100%',
+      margin: '0 auto 10px auto',
+      backgroundColor: '#fff',
+      border: '1px solid #ddd',
+      fontSize: '0.9em',
+      padding: '10px'
+    } );
+  }
+
+  function declineFee( vfiId )
+  {
+    if ( !isClicked )
+    {
+      location.href = "\x2FC21641_tsa\x2Ftapp?tapp-stoken=QLlfw4RxfTw&Navigate=current_activity.jsp&OnError=current_activity.jsp&CURR_ACTIVITY=19488&REDIRECT=&DECLINE_VOLUNTARY_FEE=" + vfiId;
+      isClicked = true;
+    }
+  }
+
+  function collapseFee( vfiId )
+  {
+    $( '#VFI_DESC_' + vfiId ).addClass( "hidden" );
+  }
+
+  const processModal = new Spinner( 'Processing...' );
+  const collapsiblePanels = $('#accordion, #termsAccordion').find('.panel-collapse');
+
+  let clicked = false;
+
+  $( "#expandCollapseBtn" ).click( function ()
+  {
+    clicked = true;
+
+    processModal.start();
+
+    $( '#spinnerModal' ).trigger( 'blur' );
+
+    if ( $( this ).children().first().text() === "Expand All")
+    {
+      $( this ).children().first().text( "Collapse All" );
+
+      $( '#screenReaderInfoMessage' ).text( "expanded" );
+
+      if ( collapsiblePanels.hasClass( 'in' ) )
+      {
+        processModal.stop();
+      }
+      collapsiblePanels.collapse( 'show' );
+    }
+    else
+    {
+      $( this ).children().first().text( "Expand All" );
+
+      $( '#screenReaderInfoMessage' ).text( "collapsed" );
+
+      if ( !collapsiblePanels.hasClass( 'in' ) )
+      {
+        processModal.stop();
+      }
+      collapsiblePanels.collapse( 'hide' );
+    }
+  });
+
+  collapsiblePanels.on( 'shown.bs.collapse hidden.bs.collapse', function ()
+  {
+    processModal.stop();
+
+    if ( clicked )
+    {
+      clicked = false;
+
+      $( "#expandCollapseBtn" ).trigger( 'focus' );
+    }
+  });
+
+  $( function() {
+    
+  } );
+
+  function viewStmt()
+  {
+    
+  }
+
+  function viewLastBillingStatement( statementId )
+  {
+    const statementForm = document.getElementById( "viewRecentBillingStatement" + statementId );
+
+    window.open( "", "viewStatement" );
+    statementForm.submit();
+  }
+</script><div id="spinnerModal" class="modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="spinner-holder text-center">
+            <p class="mt-1 mb-1" id="spinnerIcon">
+              <i class="fa fa-lg fa-spinner fa-spin"></i>
+            Processing...</p>
+          </div>
         </div>
-        
-
-
-
-
-
-
-
       </div>
     </div>
-  
+</div>
+
 
   
 
@@ -2193,4 +3216,4 @@ without having focus on it -->
 
 
 
-</body></html>
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div></body></html>
